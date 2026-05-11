@@ -8,7 +8,7 @@ public class ShippingCalculator {
         }
 
         if ("STANDARD".equalsIgnoreCase(type)) {
-            return weight * 1111;
+            return weight * 3000;
         } else if ("EXPRESS".equalsIgnoreCase(type)) {
             return weight * 5000 + 20000;
         }
