@@ -24,3 +24,10 @@ jobs:
         with:
           name: bank-system-jar
           path: Bai03/target/*.jar
+                  - name: Upload Build Artifact
+            # Bước này giúp lưu lại file .jar để tải về sau khi chạy xong
+                  uses: actions/upload-artifact@v4
+                  with:
+                    name: Bai03-Artifact-Jar
+                    # Đường dẫn trỏ đến file jar vừa build xong trong folder Bai03
+                    path: Bai03/target/*.jar
