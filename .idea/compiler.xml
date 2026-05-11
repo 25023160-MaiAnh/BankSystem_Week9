@@ -6,9 +6,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Bai01" />
+        <module name="Bai04" />
         <module name="Bai03" />
         <module name="Bai02" />
+        <module name="Bai01" />
       </profile>
     </annotationProcessing>
   </component>
