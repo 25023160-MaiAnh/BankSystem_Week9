@@ -20,6 +20,7 @@ jobs:
           cache: maven
 
       - name: Build with Maven
+        # Lệnh này sẽ tạo ra file .jar trong thư mục Bai03/target
         run: mvn -f Bai03/pom.xml clean package
       - name: Upload Artifact
         # Bước này lưu file .jar lại để bạn có thể tải về từ GitHub
