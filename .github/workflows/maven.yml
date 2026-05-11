@@ -19,13 +19,24 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
-      - name: Build with Maven
-        # Lệnh này sẽ tạo ra file .jar trong thư mục Bai03/target
+      # --- PHẦN BÀI 3 ---
+      - name: Build Bai 03
         run: mvn -f Bai03/pom.xml clean package
 
-      - name: Upload Artifact
-        # Bước này lưu file .jar lại để bạn có thể tải về từ GitHub
+      - name: Upload Artifact Bai 03
         uses: actions/upload-artifact@v4
         with:
           name: Bai03-Artifact-Jar
           path: Bai03/target/*.jar
+
+      # --- PHẦN BÀI 5 ---
+      - name: Run Bai 5 with JaCoCo
+        # Lệnh verify này sẽ chạy test và kiểm tra xem có đủ 80% coverage không
+        run: mvn -f Bai05/pom.xml clean verify
+
+      - name: Upload JaCoCo Report
+        # Trích xuất báo cáo HTML để xem dòng nào xanh dòng nào đỏ
+        uses: actions/upload-artifact@v4
+        with:
+          name: Bai05-Jacoco-Report
+          path: Bai05/target/site/jacoco/
