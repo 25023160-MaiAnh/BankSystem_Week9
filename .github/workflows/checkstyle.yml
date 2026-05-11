@@ -1,0 +1,22 @@
+name: Automated Code Review
+
+on:
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  checkstyle:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run Checkstyle
+        run: mvn -f Bai07/pom.xml checkstyle:checkstyle
+
+      - name: Checkstyle Review
+        uses: dbelyaev/action-checkstyle@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          level: warning
