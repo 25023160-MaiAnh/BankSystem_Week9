@@ -8,18 +8,20 @@ jobs:
   build:
     strategy:
       matrix:
-        # Đây là Matrix: Robot sẽ chạy trên cả 3 hệ điều hành
+        # Robot sẽ tạo ra 3 máy ảo khác nhau để chạy
         os: [ubuntu-latest, windows-latest, macos-latest]
 
     runs-on: ${{ matrix.os }}
 
     steps:
       - uses: actions/checkout@v4
+
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Test Bai 04
+      - name: Run Test Bai 04
+        # Lệnh này ép robot vào folder Bai04 để chạy test
         run: mvn -f Bai04/pom.xml test

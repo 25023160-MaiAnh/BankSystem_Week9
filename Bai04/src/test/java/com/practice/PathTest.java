@@ -1,16 +1,20 @@
 package com.practice;
 
 import org.junit.jupiter.api.Test;
-import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class PathTest {
     @Test
     public void testOSPathFixed() {
-        // Sử dụng java.nio.file.Path để tự thích nghi với mọi OS
-        java.nio.file.Path safePath = java.nio.file.Paths.get("target", "test-folder");
+        // Paths.get giúp tự động đổi dấu / hoặc \ tùy theo Hệ điều hành
+        Path safePath = Paths.get("target", "test-folder");
 
-        // Kiểm tra xem đường dẫn có chứa chữ "target" không (thay vì kiểm tra dấu gạch)
+        System.out.println("Đang chạy trên hệ điều hành: " + System.getProperty("os.name"));
+        System.out.println("Đường dẫn tạo ra: " + safePath.toString());
+
+        // Kiểm tra xem đường dẫn có chứa chữ "target" không
         assertTrue(safePath.toString().contains("target"));
     }
 }
